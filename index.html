@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CustomCAD Solution – Customize Your CAD Designs</title>
+<meta name="description" content="Autolisp programming and CAD customization services in Jakarta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#d6173f;--ink:#2a2a2a;--mute:#6b6b6b;--soft:#f1f4f7;--bg:#fcfcfe;--card:#fff;--line:#e3e6ea}
+@media(prefers-color-scheme:dark){:root{--ink:#f0f0f0;--mute:#a9adb3;--soft:#1d2024;--bg:#15171a;--card:#202327;--line:#33373c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:Poppins,Arial,sans-serif;line-height:1.2;margin:0 0 .6em}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+header{position:sticky;top:0;z-index:5;background:var(--soft);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+header img{height:56px;width:auto}
+nav a{margin-left:18px;text-decoration:none;font-family:Poppins,Arial,sans-serif;font-weight:600;font-size:15px}
+nav a:hover{color:var(--red)}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.tag{display:inline-block;background:#f0a3b3;color:#8f0f2b;padding:4px 14px;border-radius:8px;font-size:15px;margin-bottom:14px}
+h1{font-size:clamp(34px,5vw,52px)}
+h2{font-size:clamp(26px,3.5vw,36px)}
+.mute{color:var(--mute)}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:12px 26px;border-radius:6px;font-weight:700;text-decoration:none}
+.btn:hover{filter:brightness(.92)}
+.btn-alt{background:transparent;color:var(--red);border:2px solid var(--red);padding:10px 24px}
+.btn-alt:hover{background:var(--red);color:#fff;filter:none}
+.contact .btn-alt{color:#fff;border-color:#fff}
+.contact .btn-alt:hover{background:#fff;color:#2a2a2a}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.contact .actions{justify-content:center}
+.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.dark{background:#2a2a2a;color:#f0f0f0}
+.dark .mute{color:#c9c9c9}
+.kicker{color:var(--red);font-weight:700;font-family:Poppins,Arial,sans-serif}
+.dark .kicker{color:#ff3b3b}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--card);color:var(--ink);border-radius:22px;padding:30px 24px;text-align:center}
+.card .mute{color:var(--mute)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.photo{border-radius:6px;width:100%}
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:28px 36px;align-items:start}
+.proj h3{font-size:20px;margin-top:12px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px}
+.clients{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:center}
+.clients img{height:130px;width:auto;background:#fff;border-radius:4px}
+.clients img.wide{height:auto;width:260px;max-width:100%;padding:22px 18px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:14px 0;padding:0 20px}
+summary{cursor:pointer;font-family:Poppins,Arial,sans-serif;font-weight:600;font-size:19px;padding:16px 0}
+details[open] summary{color:var(--red)}
+details .body{padding:0 0 20px}
+details ul{padding-left:20px}
+details li{margin:6px 0}
+details li::marker{color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+.chips span{border:1px solid #1d3b5c;color:var(--red);padding:6px 14px;font-family:Poppins,Arial,sans-serif;font-size:13px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:16px}
+.contact{background:#2a2a2a;color:#f0f0f0;border-radius:32px;text-align:center;padding:56px 20px}
+.contact h2{color:#f0f0f0}
+footer{background:var(--soft);padding:40px 0 24px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between}
+footer b.logo{color:#c8282d;font-size:26px;font-family:Poppins,Arial,sans-serif}
+footer ul{list-style:none;margin:0;padding:0;font-size:13px;font-weight:700}
+footer li{margin:10px 0}
+.copy{font-size:13px;margin-top:24px}
+@media(max-width:760px){
+ .hero .wrap,.split,.projects,.grid3{grid-template-columns:1fr}
+ nav a{margin:0 12px 0 0;font-size:14px}
+ section{padding:44px 0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap">
+  <a href="#home"><img src="images/logo.png" alt="CustomCAD Solution"></a>
+  <nav aria-label="Main">
+   <a href="#home">Home</a><a href="#about">About Us</a><a href="#service">Service</a><a href="#contact">Contact Us</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="wrap">
+  <div>
+   <span class="tag">#1 Custom CAD design</span>
+   <h1>Customize Your CAD Designs</h1>
+   <p class="mute">Introducing CAD Customizers, the leading provider of Autolisp for CAD Customization in Jakarta. With our expertise and innovative solutions, we help businesses optimize their CAD software to meet their specific needs and streamline their design processes. Our team of skilled professionals is dedicated to delivering tailored Autolisp solutions that enhance productivity and efficiency, allowing our clients to stay ahead in the competitive market. Choose CAD Customizers Inc. for unparalleled customization services that empower your CAD software and drive your business success.</p>
+   <div class="actions"><a class="btn" href="#service">See more..</a><a class="btn btn-alt" href="Compro_CADCAM_Solution.pdf" download>Download Company Profile (PDF)</a></div>
+  </div>
+  <img class="photo" src="images/hero.jpg" alt="AutoLISP code on a screen">
+ </div>
+</section>
+
+<section class="dark">
+ <div class="wrap">
+  <div style="text-align:center">
+   <div class="kicker">What We Service</div>
+   <h2>Customize Your CAD Designs</h2>
+  </div>
+  <div class="grid3" style="margin-top:28px">
+   <div class="card"><h3>Customizable CAD Solutions</h3><p class="mute">Tailored Autolisp programming for your CAD software, optimizing workflow and improving efficiency.</p></div>
+   <div class="card"><h3>Automation For CAD Design</h3><p class="mute">Automate repetitive tasks, accelerate design processes, and enhance productivity with Autolisp programming.</p></div>
+   <div class="card"><h3>CAD Customization Support</h3><p class="mute">Expert assistance in integrating Autolisp into your CAD system, ensuring smooth implementation and operation.</p></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap split">
+  <img class="photo" src="images/why-cad.jpg" alt="AutoCAD floor plan drawing">
+  <div>
+   <div class="kicker">Why Choose us</div>
+   <h2>Expertise in CAD Customization</h2>
+   <p class="mute">With deep experience in Autolisp solutions, we ensure that your CAD can be customized to suit your specific business needs.</p>
+   <p class="mute">Customers want to work with experts who know how to create customized solutions for them, especially in a complex industry like CAD.</p>
+  </div>
+ </div>
+</section>
+
+<section class="dark" style="padding:48px 0">
+ <div class="wrap">
+  <div class="kicker">Customize CAD Speed</div>
+  <h2>Efficiency &amp; Productivity Boost</h2>
+  <p class="mute">Our solutions are not only custom, but also designed to increase efficiency and productivity by automating repetitive tasks.</p>
+  <p class="mute">Businesses are always looking for ways to speed up processes without compromising on quality. Automating CAD tasks can be a key differentiator.</p>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <h2 style="text-align:center;margin-bottom:36px">Recent Projects or Our Projects</h2>
+  <div class="projects">
+   <div class="proj"><img class="photo" src="images/proj-automation.jpg" alt="AutoCAD and Excel automation"><h3>Automation for CAD Design</h3><p class="mute">Automate repetitive tasks, accelerate design processes, and enhance productivity with AutoLISP programming.</p></div>
+   <div class="proj"><img class="photo" src="images/proj-custom.jpg" alt="Engineer working with CAD software"><h3>AutoCAD Customization Solutions</h3><p class="mute">Provided tailored Autolisp solutions to optimize CAD software for increased efficiency and accuracy.</p></div>
+   <div class="proj"><img class="photo" src="images/proj-training.jpg" alt="Autolisp training session, 4 Agt 2017"><h3>Autolisp Training and Support</h3><p class="mute">Offered comprehensive training and ongoing support for Autolisp usage to maximize its potential for CAD customization.</p></div>
+   <div class="proj"><img class="photo" src="images/proj-workflow.jpg" alt="CAD workflow tool"><h3>CAD Workflow Enhancement</h3><p class="mute">Streamlined CAD workflow by creating personalized Autolisp tools to automate repetitive tasks and boost productivity.</p></div>
+   <div class="proj"><img class="photo" src="images/proj-consult.jpg" alt="Consultation session, 4 Agt 2017"><h3>CAD Customization Consultation</h3><p class="mute">Advised on optimal Autolisp solutions and strategies to tailor CAD systems to specific industry needs and requirements.</p></div>
+   <div class="proj"><img class="photo" src="images/proj-bug.jpg" alt="Bug in code under a magnifying glass"><h3>Autolisp Script Maintenance</h3><p class="mute">Ensured smooth operation of custom Autolisp scripts by providing regular maintenance and updates for CAD customization.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="about" style="background:var(--soft)">
+ <div class="wrap">
+  <div class="split">
+   <img class="photo" src="images/about-cad.jpg" alt="AutoCAD crane girder program">
+   <div>
+    <h2>About CADCAM Solution</h2>
+    <p class="mute">At <b>CADCAM Solution</b>, we specialize in delivering customized CAD (Computer-Aided Design) and CAM (Computer-Aided Manufacturing) solutions that optimize the entire design-to-manufacturing process. Based in Jakarta, we have built a reputation as a leading provider of tailored <b>AutoLISP</b> programming and CAD customization services, helping businesses in industries such as engineering, architecture, construction, and manufacturing streamline their workflows and improve efficiency.</p>
+    <p class="mute">Our team of experts is dedicated to crafting solutions that fit the specific needs of each client, whether it’s automating repetitive design tasks, enhancing the capabilities of CAD software, or integrating seamless design-to-production workflows. We are committed to delivering cutting-edge technology that not only simplifies complex tasks but also accelerates production and increases accuracy.</p>
+   </div>
+  </div>
+  <div class="split" style="margin-top:56px">
+   <div>
+    <h2>About The Team</h2>
+    <p class="mute">At <b>CADCAM Solution</b>, our strength lies in our team of highly skilled professionals who are passionate about revolutionizing the way businesses approach CAD and CAM. With diverse expertise in <b>AutoLISP programming</b>, CAD customization, and manufacturing technologies, we work together to deliver innovative solutions that drive efficiency, accuracy, and growth for our clients.</p>
+   </div>
+   <img class="photo" src="images/team.jpg" alt="The CADCAM Solution team at work">
+  </div>
+  <div class="gallery" style="margin-top:36px">
+   <img src="images/gal1.jpg" alt="Team handshake over blueprints" loading="lazy">
+   <img src="images/gal2.jpg" alt="Training room, 4 Agt 2017" loading="lazy">
+   <img src="images/gal3.jpg" alt="Team working at a meeting table" loading="lazy">
+   <img src="images/gal4.jpg" alt="Team group photo" loading="lazy">
+  </div>
+ </div>
+</section>
+
+<section class="dark">
+ <div class="wrap" style="text-align:center">
+  <h2>Our Clients</h2>
+  <div class="clients">
+   <img src="images/client-iai.jpg" alt="Ikatan Arsitek Indonesia Jakarta">
+   <img src="images/client-twintech.jpg" alt="Twintech Precision">
+   <img src="images/client-door.jpg" alt="Door product of a client">
+   <img class="wide" src="images/client-boccard.png" alt="Boccard – Alliance for success">
+  </div>
+ </div>
+</section>
+
+<section id="service">
+ <div class="wrap">
+  <div class="split" style="align-items:start">
+   <div>
+    <h2>Services provide for you</h2>
+    <p class="mute">At <b>CADCAM Solution</b>, we specialize in empowering businesses by delivering custom CAD programming solutions, industry-focused training, and practical resources. Our goal is to help our clients enhance their design and manufacturing workflows, improve efficiency, and stay competitive in an ever-evolving landscape.</p>
+   </div>
+   <div>
+    <details open>
+     <summary>Custom Program engineering CAD</summary>
+     <div class="body">
+      <p class="mute">Our <b>Custom Program Engineering CAD</b> service is crafted to meet the specific challenges that your business faces in the design process. We focus on developing tailored CAD programs using tools like <b>AutoLISP</b>, allowing us to automate repetitive tasks, reduce errors, and enhance productivity. Whether you are in architecture, engineering, or manufacturing, our custom solutions ensure that your CAD systems align perfectly with your unique workflow requirements.</p>
+      <p>Key benefits include:</p>
+      <ul>
+       <li><b>Automation</b>: Simplify complex workflows and eliminate repetitive manual tasks by automating your design processes.</li>
+       <li><b>Improved Accuracy</b>: Enhance the precision of your designs through customized solutions, reducing the risk of human error.</li>
+       <li><b>Scalability</b>: Our solutions grow with your business, providing flexibility as your project needs evolve.</li>
+       <li><b>Seamless Integration</b>: We ensure that our custom programs integrate smoothly with your current CAD setup, ensuring a hassle-free transition.</li>
+      </ul>
+      <p class="mute">By partnering with <b>CADCAM Solution</b>, you’re not just investing in short-term gains but in a solution that will support your design needs for years to come.</p>
+     </div>
+    </details>
+    <details>
+     <summary>Ebook AutoLISP (Indonesian)</summary>
+     <div class="body">
+      <img src="images/ebook-cover.jpg" alt="Cover: AutoCAD Programming with AutoLISP, by Heri Agus Purwono" style="width:170px;margin-bottom:14px">
+      <p class="mute">For those looking to gain deeper insights into <b>AutoLISP</b> programming, our <b>Ebook AutoLISP</b>, written in <b>Indonesian</b>, is the perfect resource. This eBook is a step-by-step guide that covers both fundamental and advanced aspects of <b>AutoLISP</b>, making it accessible to users at all levels of experience. Whether you’re just starting out or looking to refine your CAD automation techniques, the eBook offers practical tips and examples to help you enhance your CAD workflows.</p>
+      <p>Features of the eBook:</p>
+      <ul>
+       <li><b>Comprehensive Guide</b>: From basic commands to complex scripts, this eBook covers everything you need to know about AutoLISP.</li>
+       <li><b>Real-World Examples</b>: Learn through practical, real-world examples that you can immediately apply to your CAD projects.</li>
+       <li><b>User-Friendly Language</b>: Written in Indonesian, the eBook is easy to follow, making it accessible to users of all levels.</li>
+      </ul>
+      <p class="mute">With this eBook, you’ll gain valuable knowledge that enables you to optimize your CAD system, automate tasks, and streamline your design processes, all while learning at your own pace.</p>
+      <div class="shots"><img class="photo" src="images/ebook-1.jpg" alt="Tutorial AutoLISP untuk Pemula" loading="lazy"><img class="photo" src="images/ebook-2.jpg" alt="Daftar isi ebook" loading="lazy"></div>
+     </div>
+    </details>
+    <details>
+     <summary>Training Software Engineering</summary>
+     <div class="body">
+      <img class="photo" src="images/train1.jpg" alt="Pelatihan, 4 Agt 2017" style="margin-bottom:14px">
+      <h3 style="font-size:20px">Layanan Pelatihan Rekayasa Perangkat Lunak</h3>
+      <p class="mute">Agar tetap kompetitif dalam lingkungan desain yang berubah dengan cepat, sangat penting bagi tim Anda untuk tetap menjadi yang terdepan. <b>Layanan Pelatihan Rekayasa Perangkat Lunak</b> kami dirancang untuk membekali staf Anda dengan keterampilan mutakhir dalam kustomisasi CAD, dengan fokus khusus pada penulisan <b>AutoLISP</b> dan pengoptimalan perangkat lunak. Program pelatihan kami bersifat langsung dan disesuaikan dengan tingkat keterampilan tim Anda saat ini, memastikan mereka dapat segera menerapkan apa yang telah mereka pelajari pada proyek yang sedang berlangsung. Apa yang membedakan pelatihan kami:</p>
+      <ul>
+       <li><b>Implementasi di Dunia Nyata</b>: Kami menekankan latihan praktis dan langsung untuk memastikan tim Anda dapat mengimplementasikan solusi dalam proyek waktu nyata.</li>
+       <li><b>Kurikulum Khusus</b>: Setiap program pelatihan disesuaikan dengan kebutuhan spesifik tim Anda, baik pemula maupun pengguna tingkat lanjut.</li>
+       <li><b>Format Fleksibel</b>: Kami menawarkan sesi pelatihan tatap muka, serta opsi jarak jauh, untuk mengakomodasi berbagai pengaturan dan jadwal tim.</li>
+       <li><b>Dampak Jangka Panjang</b>: Dengan menguasai otomatisasi dan kustomisasi sistem CAD, tim Anda akan meningkatkan efisiensi dan produktivitas proyek.</li>
+      </ul>
+      <p class="mute">Pelatihan kami memberdayakan tenaga kerja Anda untuk memanfaatkan potensi penuh perangkat lunak CAD, tidak hanya meningkatkan keterampilan individu tetapi juga efisiensi keseluruhan operasi bisnis Anda.</p>
+      <h3 style="font-size:17px">Standart Engineering Software</h3>
+      <div class="chips"><span>AutoCAD 2D &amp; 3D</span><span>AutoCAD Electrical</span><span>Inventor Pro</span><span>SolidWorks</span></div>
+      <h3 style="font-size:17px">Customize Engineering Software</h3>
+      <div class="chips"><span>AutoLISP / .NET</span><span>iLogic</span></div>
+      <div class="shots"><img class="photo" src="images/train2.jpg" alt="Pelatihan" loading="lazy"><img class="photo" src="images/train3.jpg" alt="Pelatihan" loading="lazy"><img class="photo" src="images/train4.jpg" alt="Pelatihan" loading="lazy"><img class="photo" src="images/train5.jpg" alt="Pelatihan, 4 Feb 2018" loading="lazy"></div>
+     </div>
+    </details>
+    <details>
+     <summary>Ongoing Support &amp; Maintenance</summary>
+     <div class="body">
+      <img class="photo" src="images/support.jpg" alt="Support team at work" style="margin-bottom:14px">
+      <p class="mute">At <b>CADCAM Solution</b>, we understand that keeping your CAD systems up-to-date and functioning optimally is crucial to maintaining productivity and meeting deadlines. That’s why we offer <b>Ongoing Support &amp; Maintenance</b> as part of our service offerings. This service is designed to provide you with continuous support for your CAD programs, ensuring that your systems run smoothly and efficiently, without interruptions that could derail your projects.</p>
+      <p>Our support services include:</p>
+      <ul>
+       <li><b>Regular Software Updates</b>: We keep your CAD systems updated with the latest software patches and enhancements, ensuring optimal performance.</li>
+       <li><b>Troubleshooting &amp; Issue Resolution</b>: Our team is available to assist you with any technical issues that may arise, whether it’s troubleshooting bugs, fixing system glitches, or resolving integration problems.</li>
+       <li><b>Proactive Maintenance</b>: Beyond addressing immediate issues, we offer proactive maintenance services to prevent potential problems from occurring, ensuring your systems remain reliable and efficient.</li>
+       <li><b>Dedicated Support Team</b>: Our experienced technical support team is always on hand to provide assistance, whether remotely or on-site, ensuring you receive timely and effective help whenever it’s needed.</li>
+      </ul>
+      <p class="mute">By opting for our <b>Ongoing Support &amp; Maintenance</b> service, you’re investing in the long-term health and functionality of your CAD systems, ensuring they continue to serve your business effectively as technology evolves.</p>
+      <div class="shots"><img class="photo" src="images/proj-bug.jpg" alt="Bug in code" loading="lazy"><img class="photo" src="images/teamwork.jpg" alt="Teamwork illustration" loading="lazy"></div>
+     </div>
+    </details>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+ <div class="wrap">
+  <div class="contact">
+   <div class="kicker" style="color:#ff3b3b">Contact us</div>
+   <h2>Want to ask first?<br>contact us here</h2>
+   <!-- GANTI nomor WhatsApp di bawah (format: 62812xxxxxxx tanpa + dan tanpa spasi) -->
+   <div class="actions"><a class="btn" href="https://wa.me/628561228212">Whatsapp</a><a class="btn btn-alt" href="Compro_CADCAM_Solution.pdf" download>Download Company Profile (PDF)</a></div>
+   <p style="margin-top:28px;color:#c9c9c9">Jl. Manggala 2 Blok M1 No.8, Cipondoh Tangerang-Banten 15148</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div style="max-width:260px"><b class="logo">CustomCAD</b><p class="mute" style="font-size:14px">Enhance your CAD designs with Autolisp for seamless customization and improved efficiency.</p></div>
+  <ul><li><a href="#home">HOME</a></li><li><a href="#about">ABOUT US</a></li><li><a href="#service">SERVICE</a></li><li><a href="#contact">CONTACT US</a></li></ul>
+  <!-- GANTI tanda # dengan link asli masing-masing -->
+  <ul><li><a href="#">YOUTUBE</a></li><li><a href="#">EMAIL</a></li><li><a href="#">WHATSAPP</a></li><li><a href="#">LINKEDIN</a></li></ul>
+ </div>
+ <div class="wrap copy mute">Copyright © 2026 – CustomCAD Solution</div>
+</footer>
+
+</body>
+</html>
